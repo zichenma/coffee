@@ -1,0 +1,14 @@
+.container {
+    display: flex; 
+    align-items: center;        /* 垂直居中 */
+    justify-content: center;    /* 水平居中 */
+
+}
+.wrappedElement {
+ border:1px solid red;
+}
+
+.toggleClass{
+	color:red;
+}
+
