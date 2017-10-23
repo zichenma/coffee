@@ -17,7 +17,6 @@ return [0, 1].
  */
 var twoSum = function(nums, target) {
     var hash = {};
-    
     for(var i = 0; i < nums.length; i++) {
         var num = nums[i];
         if(hash[target-num] !== undefined) {

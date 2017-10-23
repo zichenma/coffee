@@ -59,6 +59,22 @@ var maxProfit = function(prices) {
 };
 
 
+var maxProfit1 = function (prices) {
+	if (prices.length === 0 || prices === null) {return 0};
+	// set the min as Infinity and profit as 0, so that it can keep updating the min and profit
+    var min = Infinity, profit = 0;
+    for ( var i = 0; i < prices.length; i++ ) {
+        if (prices[i] < min) {
+			// finde the min 
+            min = prices[i];
+		} 
+		// keep comparing the min so that get the max profit 
+        profit = Math.max(profit, prices[i] - min); 
+    }
+    return profit;
+};
+
+
 
 console.log(maxProfit([2,4,1]));
 //console.log(maxProfit([7, 1, 5, 3, 6, 4]));

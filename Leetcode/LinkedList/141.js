@@ -50,7 +50,7 @@ var hasCycle = function(head) {
 	if(head == null){
 		return false;
 	}
-	while(fast || slow){
+	while(fast.next && fast.next.next){
 		fast = fast.next.next;
 		slow = slow.next;
 		if(fast == slow){

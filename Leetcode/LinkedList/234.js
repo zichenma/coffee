@@ -9,38 +9,47 @@
  * @param {ListNode} head
  * @return {boolean}
  */
+
+
+// 1. find the middle of the list
+// 2. reverse the second half of list
+// 3. compare the value 
+
 var isPalindrome = function(head) {
-	var fast = head, slow = head;
-	while(fast && fast.next){
-		fast = fast.next.next;
-		slow = slow.next;
-	}
-	slow = reverseList(slow);
-	fast = head;
-	while(slow){
-		if(fast.val !== slow.val){
-			return false;
-		}
-		fast = fast.next;
-		slow = slow.next;
-	}
-	return true;
-};
-
-
-var reverseList = function(head) {
-    var previous, current = head, temp;
-        while(current){
-            temp = current.next;
-            current.next = previous;
-            previous = current;
-            current = temp;
+    var middle = findMiddle(head);
+    middle.next = reverseList(middle.next);
+    var p = head, q = middle.next;
+    while (p && q) {
+        if (p.val !== q.val) {
+            return false;
         }
-        return previous;
+        p = p.next;
+        q = q.next;
+    }
+    return true;
 };
 
+// find the middle
+function findMiddle (head) {
+    var fast = head.next, slow = head;
+    while (fast && fast.next) {
+        fast = head.next.next;
+        slow = head.next;
+    }
+    return slow;
+}
 
-console.log(reverseList(build()));
+// reverse the LinkedList
+function reverseList (head) {
+    var pre, curr = head, temp;
+    while (curr) {
+        temp = curr.next;
+        curr.next = pre;
+        pre = curr;
+        curr = tem;
+    }
+}
+
 
 
 
