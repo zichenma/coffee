@@ -1,3 +1,1 @@
-var frequencySort = function(s) {
-    
-};
+console.log(window.name);
