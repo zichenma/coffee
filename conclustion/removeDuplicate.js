@@ -20,4 +20,4 @@ var noDuplicate2 = function (arr) {
 // for primitive data
 var noDuplicate3 = function (arr) {
     	return Array.from(new Set(arr));
-    }
+}

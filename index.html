@@ -7,49 +7,8 @@
 <!--<script type="text/javascript" src="BT.js"></script>-->
 <!-- <script type="text/javascript" src="browser.min.js"></script> -->
 <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script> -->
-<script type="text/javascript" src="WU_objects.js"></script>
 </head>
 <body>
-<!--<div style="height: 2px; background-color: brown; overflow: hidden;"></div>-->
-<div ng-controller = "myCtr">
-<label>Number: <input type="text" ng-model = "input"></label>
-<button ng-click = "getAllFactorsFor()">Click</button>
-<p id = "demo"></p>
-</div>
-
-<!--<script type="text/javascript">
-for(var i = 1; i <= 100; i++) {
-	var div = document.createElement("div");                       
-	document.body.appendChild(div);
-	div.innerHTML = i;
-
-}
-for(var i = 0; i < 100; i++) {
-	if( i % 2 == 0){
-		document.getElementsByTagName("div")[i].style.color = "red";
-	}else{
-		document.getElementsByTagName("div")[i].style.color = "blue";
-	}	
-}
-</script>-->
-<script>
-    function createJs(sUrl){
- 
-        var oScript = document.createElement('script');
-        oScript.type = 'text/javascript';
-        oScript.src = sUrl;
-        document.getElementsByTagName('head')[0].appendChild(oScript);
-    }
- 
-    createJs('jsonp.js');
- 
-    box({
-       'name': 'test'
-    });
- 
-    function box(json){
-        alert(json.name);
-    }
-</script>
+<script type="text/javascript" src="js.js"></script>
 </body>
 </html>
