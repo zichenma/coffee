@@ -1,26 +1,59 @@
-function quickSort(arr){
-    if(arr.length<=1){
-        return arr;//如果数组只有一个数，就直接返回；
-    }
+//  Time: best: avg: O(nlogn) worset: O(n2) Space: O(n) (in this case)
 
-    var num = Math.floor(arr.length / 2);//找到中间数的索引值，如果是浮点数，则向下取整
-
-    var numValue = arr.splice(num,1);//找到中间数的值
-
-    var left = [];
-    var right = [];
-
-    for(var i = 0; i<arr.length; i++){
-
-        if(arr[i] < numValue){
-            left.push(arr[i]);//基准点的左边的数传到左边数组
+function quickSort (arr) {
+    // edge case
+    if (arr.length <= 1) return arr;
+    //initialize lfet, right and pointer as the left
+    var left = [], right = [], q = arr[0];
+    // i is start from 1
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] > q) {
+            right.push(arr[i]);
+        } else {
+            left.push(arr[i]);
         }
-        else{
-           right.push(arr[i]);//基准点的右边的数传到右边数组
-        }
-    }
     
-    return quickSort(left).concat([numValue],quickSort(right));//递归不断重复比较
+    }
+    // merge them
+    return [].concat(quickSort(left),q,quickSort(right));
+
 }
 
-document.write(quickSort([32,45,37,16,2,87]));//弹出“2,16,32,37,45,87”
+document.write(quickSort([32,45,37,16,2,87]));
+
+
+
+function mergeSort(arr)
+{
+    if (arr.length <= 1) return arr;
+ 
+    var middle = Math.floor(arr.length / 2);
+    var left   = arr.slice(0, middle);
+    var right  = arr.slice(middle, arr.length);
+ 
+    return merge(mergeSort(left), mergeSort(right));
+}
+ 
+function merge(left, right)
+{
+    var result = [];
+ 
+    while (left.length && right.length) {
+        if (left[0] <= right[0]) {
+            result.push(left.shift());
+        } else {
+            result.push(right.shift());
+        }
+    }
+ 
+    while (left.length)
+        result.push(left.shift());
+ 
+    while (right.length)
+        result.push(right.shift());
+ 
+    return result;
+}
+
+document.write(mergeSort([32,45,37,16,2,87]));
+

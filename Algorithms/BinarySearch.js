@@ -4,8 +4,8 @@ function quickSort(arr) {
     }
     let leftArr = [];
     let rightArr = [];
-    let q = arr[0];
-    for(let i = 1,l=arr.length; i<l; i++) {
+	let q = arr[0];
+    for(let i = 1; i<arr.length; i++) {
         if(arr[i]>q) {
             rightArr.push(arr[i]);
         }else{
@@ -15,8 +15,9 @@ function quickSort(arr) {
     return [].concat(quickSort(leftArr),[q],quickSort(rightArr));
 }
 
-var binarySearch = function(item){
-	this.quickSort();
+
+var binarySearch = function(item, array){
+	array.quickSort();
 
 	var low = 0,
 		high = array.length -1;

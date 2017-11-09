@@ -15,7 +15,7 @@ Subscribe to see which companies asked this question
  */
 var strStr = function(haystack, needle) {
  	var m = haystack.length, n = needle.length;
- 	//Check the needle's lenght
+ 	//Check the needle's length
  	if(n == 0){
  		return 0;
  	}

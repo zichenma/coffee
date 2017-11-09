@@ -11,6 +11,7 @@ class Solution {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums.length == 0 || nums == null) return res;
+        Arrays.sort(nums);
         dfs(res, nums, 0, new ArrayList<Integer>());
         return res;
     }

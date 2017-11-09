@@ -1,11 +1,5 @@
 // See java
-// Using DP to solve (helper function): 
-// take num[i] or not take num[i]
-// 1. when currIndex == nums.length means all the cases are token
-// 2. if not take: subsetHelper()
-// 3. if take: curr.add(nums[currIndex})
-//    call helper again
-// 4. remove the last element put into curr
+
   
 var subsets = function(nums) {
     var array = [[]];
