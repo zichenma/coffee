@@ -1,25 +1,44 @@
 //  Time: best: avg: O(nlogn) worset: O(n2) Space: O(n) (in this case)
 
 function quickSort (arr) {
-    // edge case
-    if (arr.length <= 1) return arr;
-    //initialize lfet, right and pointer as the left
-    var left = [], right = [], q = arr[0];
-    // i is start from 1
-    for (var i = 1; i < arr.length; i++) {
-        if (arr[i] > q) {
-            right.push(arr[i]);
-        } else {
-            left.push(arr[i]);
-        }
-    
+    if (arr === null || arr.length === 0) {
+        return;
     }
-    // merge them
-    return [].concat(quickSort(left),q,quickSort(right));
-
+    var sortedArr = partition(arr, 0 , arr.length - 1);
+    return sortedArr;
 }
 
-document.write(quickSort([32,45,37,16,2,87]));
+function partition (arr, start, end) {
+    if (start >= end) {
+        return;
+    }
+
+    var left = start, right = end;
+    var pivot = arr[Math.floor((start + end) / 2)];
+
+    while (left <= right) {
+        while (left <= right && arr[left] < pivot) {
+            left++;
+        }
+
+        while (left <= right && arr[right] > pivot) {
+            right--;
+        }
+
+        if (left <= right) {
+            var temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left ++;
+            right --;
+        }
+    }
+    partition(arr, start, right);
+    partition(arr, left, end);  
+    return arr;
+}
+
+console.log(quickSort([3,2,1]));
 
 
 
@@ -30,7 +49,7 @@ function mergeSort(arr)
     var middle = Math.floor(arr.length / 2);
     var left   = arr.slice(0, middle);
     var right  = arr.slice(middle, arr.length);
- 
+          
     return merge(mergeSort(left), mergeSort(right));
 }
  
@@ -43,7 +62,7 @@ function merge(left, right)
             result.push(left.shift());
         } else {
             result.push(right.shift());
-        }
+        } 
     }
  
     while (left.length)

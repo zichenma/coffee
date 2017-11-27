@@ -23,8 +23,40 @@ class Solution1 {
         recursion(root.right, res);
     }
 }
-// Idea: whle + stack
+// Idea: while + stack
 class Solution2 {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        
+        if (root == null) {
+            return res;
+        }
+        
+        Stack<TreeNode> s = new Stack<>();
+        TreeNode curr = root;
+        boolean done = false;
+        
+        while (!done) {
+            if (curr != null) {
+                s.push(curr);
+                curr = curr.left;
+            } else {
+                if (s.isEmpty()) {
+                    done = true;
+                } else {
+                    curr = s.pop();
+                    res.add(curr.val);
+                    curr = curr.right;
+                }
+                
+            }
+        } 
+        
+        return res;
+    }
+}
+
+class Solution3 {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new LinkedList<Integer>();
         if (root == null) return res;

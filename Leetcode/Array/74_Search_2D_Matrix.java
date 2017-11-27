@@ -29,44 +29,57 @@ class Solution {
 }
 
 // Dichotomy : https://www.youtube.com/watch?v=R5mcIwLBtWI&t=15
-class Solution {
-  public boolean searchMatrix(int[][] matrix, int target) {
-            if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {return false;}
-            int startRow = 0;
-            int endRow = matrix.length - 1;
-            int endCol = matrix[0].length - 1;
-            int row = -1;
-            while (startRow + 1 < endRow) {
-                int mid = startRow + (endRow - startRow) / 2;
-                if (matrix[mid][endCol] < target) {
-                    startRow = mid;
-                } else {
-                    endRow = mid;
-                }
-            }
-            if (matrix[startRow][endCol] >= target) {
-                row = startRow;
-            } else if (matrix[endRow][endCol] >= target) {
-                row = endRow;
-            } else {
-                return false;
-            }
-
-            int start = 0;
-            int end = endCol;
-            while (start + 1 < end) {
-                int mid = start + (end - start) / 2;
-                if (matrix[row][mid] < target) {
-                    start = mid;
-                } else {
-                    end = mid;
-                }
-            }
-            if (matrix[row][start] == target || matrix[row][end] == target) {
+public class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0) {
+            return false;
+        }
+        if (matrix[0] == null || matrix[0].length == 0) {
+            return false;
+        }
+        
+        int row = matrix.length;
+        int column = matrix[0].length;
+        
+        // find the row index, the last number <= target 
+        int start = 0, end = row - 1;
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (matrix[mid][0] == target) {
                 return true;
+            } else if (matrix[mid][0] < target) {
+                start = mid;
             } else {
-                return false;
+                end = mid;
             }
         }
+        if (matrix[end][0] <= target) {
+            row = end;
+        } else if (matrix[start][0] <= target) {
+            row = start;
+        } else {
+            return false;
+        }
+        
+        // find the column index, the number equal to target
+        start = 0;
+        end = column - 1;
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (matrix[row][mid] == target) {
+                return true;
+            } else if (matrix[row][mid] < target) {
+                start = mid;
+            } else {
+                end = mid;
+            }
+        }
+        if (matrix[row][start] == target) {
+            return true;
+        } else if (matrix[row][end] == target) {
+            return true;
+        }
+        return false;
+    }
 }
 

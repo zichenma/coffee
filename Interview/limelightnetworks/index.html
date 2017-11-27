@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 <head>
-<link rel="stylesheet" type="text/css" href="style.css">
+<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 <!--<script type="text/javascript" src="js.js"></script>-->
 <!--<script type="text/javascript" src="graph.js"></script>-->
 <!--<script type="text/javascript" src="BT.js"></script>-->
@@ -16,7 +16,7 @@
     function addButton (str, callback) {
         var button = document.createElement("button");
         var body = document.getElementsByTagName("body")[0];
-
+  
         button.innerHTML = str;
         body.appendChild(button);
         
@@ -28,6 +28,8 @@
        })
      
     }
+    addButton("add", function(counter){return counter += 1});
+    addButton("mius", function(counter){return counter -= 1});
 </script>
 </body>
 </html>

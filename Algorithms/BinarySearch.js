@@ -16,27 +16,39 @@ function quickSort(arr) {
 }
 
 
-var binarySearch = function(item, array){
-	array.quickSort();
+var binarySearch = function(nums, target){
+	quickSort(nums);
 
-	var low = 0,
-		high = array.length -1;
-		mid, element;
+	if (nums == null || nums.length == 0) {
+		return -1;
+	}
 
-	while (low <= high){
-		mid = Math.floor((low + high)/2);
-		element = array[mid];
-		if (element < item){
-			low = mid + 1;
-		}else if (element > item){
-			high = mid -1;
-		}else{
-			return mid;
+	var start = 0, end = nums.length - 1;
+
+	while (start + 1 < end) {
+
+        var mid = Math.floor((start + end) / 2);
+       
+		if (nums[mid] == target) {
+			end = mid;
+		} else if (nums[mid] > target) {
+			end = mid;
+		} else {
+			start = mid;
 		}
 	}
+    if (nums[start] == target) {
+		return start;
+	}
+	if (nums[end] == target) {
+
+		return end;
+	}
+
 	return -1;
+
 }
 
 
 
-
+console.log(binarySearch([1,4,5,13,0,4], 4));
